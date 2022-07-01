@@ -1,9 +1,20 @@
-<!--Мы будем расширять базовый шаблон base.html-->
-<!--В блок content поместим информацию, содержимое главной страницы-->
 {% extends 'base.html' %}
 
 {% block content %}
-<!--Точто было написано в базовом шаблоне отображено в функции super-->
+
 {{ super() }}
-<p>Content main page</p>
+
+<p><a href="{{ url_for('admin.index')}}">Admin panel</a></p>
+<hr>
+<h2>Publication list</h2>
+<ul class="list-posts">
+
+{% for p in posts %}
+<li>
+<p class="title"><a href="{{ url_for('showPost', alias=p.url)}}">{{p.title}}</a></p>
+<p class="annonce">{{ p.text[:50] | striptags }}</p>
+</li>
+{% endfor %}
+
+</ul>
 {% endblock %}
