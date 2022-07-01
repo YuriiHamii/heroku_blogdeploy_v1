@@ -1,0 +1,10 @@
+<!-- Расширяем базовый шаблон и добавляем в одну строчку -->
+{% extends 'base.html' %}
+ 
+{% block content %}
+{{ super() }}
+<p>Dear user, page not found, please we ask you to retern <a href="{{url_for('index')}}"> to the main</a> page.
+	<div>
+		<img src="page404.png" alt='error 404'>
+	</div>
+{% endblock %}
